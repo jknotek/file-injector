@@ -1,0 +1,19 @@
+
+shouldn't work:
+{DONT-REPLACE-ME}{{DON'T-INJECT-HERE}}
+{{INJECT-
+HERE}}
+
+should work:
+{{INJECT-HERE}}
+
+test repeats:
+{{INJECT-HERE}}
+
+test other files:
+{{another test}}
+{{INJECT-HERE}}
+{{another test}}
+
+test empty replacement:
+NOTHING replace-me HERE

@@ -1,0 +1,21 @@
+
+shouldn't work:
+{DONT-REPLACE-ME}{{DON'T-INJECT-HERE}}
+{{INJECT-
+HERE}}
+
+should work:
+abcdef123456!@#$%
+
+test repeats:
+abcdef123456!@#$%
+
+test other files:
+file-with-newline
+
+abcdef123456!@#$%
+file-with-newline
+
+
+test empty replacement:
+NOTHINGHERE
