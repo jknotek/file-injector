@@ -35,8 +35,6 @@ int main(int argc, char const *argv[]) {
 		exit(1);
 	}
 
-	// TODO: check support for quotation marks around arguments
-
 	if ((argc - 1) % 2 != 0) {
 		fprintf(
 			stderr,
@@ -49,15 +47,22 @@ int main(int argc, char const *argv[]) {
 	int c;
 	// TODO: determine this from actually checking args
 	int longest_search = 30;
+	int exit_code = 0;
 
-	// TODO: check these for failure
 	char *curr_buffer = malloc(longest_search+1);
 	char *compare_buffer = malloc(longest_search+1);
 
+	if (curr_buffer == NULL || compare_buffer == NULL) {
+		fprintf(stderr, "Could not allocate memory.\n");
+		exit_code = 1;
+		goto quit;
+	}
+
 	for (int l=0; l<longest_search; l++) {
 		if ((c = getchar()) == EOF) {
-			// TODO: crash and burn
-			return 1;
+			fprintf(stderr, "One or more search terms is larger than the template file!\n");
+			exit_code = 1;
+			goto quit;
 		}
 		curr_buffer[l] = c;
 	}
@@ -110,5 +115,5 @@ int main(int argc, char const *argv[]) {
 	free(curr_buffer);
 	free(compare_buffer);
 
-	return 0;
+	return exit_code;
 }
